@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Form validation</title>
+</head>
+<body>
+  <center>
+    <fieldset style="width: 400px;height: 350px;">
+  <h2>ID Form validation </h2>
+  <form id="myForm">
+    <label>First Name: <input type="text" name="firstname" ></label><br><br>
+    <label>Last Name: <input type="text" name="lastname" ></label><br><br>
+    <label>Email: <input type="text" name="email" ></label><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+      const inputs = this.querySelectorAll('input[type="text"]');
+      let allFilled = true;
+
+      for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].value.trim() === '') {
+          allFilled = false;
+          alert("Please fill in the " + inputs[i].name + " field.");
+          inputs[i].focus();
+          break;
+        }
+      }
+
+      if (!allFilled) {
+        event.preventDefault(); 
+      }
+    });
+  </script>
+</fieldset>
+</center>
+</body>
+</html>
